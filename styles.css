@@ -79,3 +79,13 @@ body {
 .action-btn.active {
   background: #7cbc7c;
 }
+
+.hidden {
+  display: none !important;
+}
+
+#pokemon-types {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}

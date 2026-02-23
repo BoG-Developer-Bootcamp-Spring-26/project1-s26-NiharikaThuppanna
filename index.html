@@ -12,31 +12,27 @@
   <div class="container">
     <div class="left-section">
       <div class="image-container">
-        <img src="" alt="">
+        <img id="pokemon-image" src="" alt="">
       </div>
-      <div class="name-display">bulbasaur</div>
+      <div class="name-display" id="pokemon-name">bulbasaur</div>
       <div class="types-section">
         <span class="types-label">Types:</span>
-        <span class="type-tag">grass</span>
-        <span class="type-tag">poison</span>
+        <div id="pokemon-types"></div>
       </div>
       <div class="nav-buttons">
-        <button class="nav-btn">&lt;</button>
-        <button class="nav-btn">&gt;</button>
+        <button id="prev-btn" class="nav-btn">&lt;</button>
+        <button id="next-btn" class="nav-btn">&gt;</button>
       </div>
     </div>
     <div class="right-section">
-      <h2>Info</h2>
+      <h2 id="panel-title">Info</h2>
       <div class="stats-box">
-        <div class="stat-row">height: 0.7m</div>
-        <div class="stat-row">weight: 6.9kg</div>
-        <div class="stat-row">hp: 45</div>
-        <div class="stat-row">attack: 49</div>
-        <div class="stat-row">defense: 49</div>
+        <div id="info-panel"></div>
+        <div id="moves-panel" class="hidden"></div>
       </div>
       <div class="action-buttons">
-        <button class="action-btn active">Info</button>
-        <button class="action-btn">Moves</button>
+        <button id="info-btn" class="action-btn active">Info</button>
+        <button id="moves-btn" class="action-btn">Moves</button>
       </div>
     </div>
   </div>
