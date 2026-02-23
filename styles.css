@@ -8,3 +8,74 @@ body {
   gap: 48px;
   justify-content: center;
 }
+
+.left-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.image-container {
+  width: 240px;
+  height: 240px;
+  border: 2px solid black;
+  background: white;
+}
+
+.name-display {
+  background: #e0e0e0;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.types-section {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.type-tag {
+  padding: 4px 12px;
+  border-radius: 8px;
+  background: #78C850;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.nav-btn {
+  padding: 12px 20px;
+  border-radius: 8px;
+  background: #e0e0e0;
+  cursor: pointer;
+}
+
+.right-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stats-box {
+  background: #e8e8e8;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.action-btn {
+  padding: 12px 24px;
+  border-radius: 8px;
+  background: #e0e0e0;
+  cursor: pointer;
+}
+
+.action-btn.active {
+  background: #7cbc7c;
+}
