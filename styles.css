@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  padding: 24px;
+}
+
+.container {
+  display: flex;
+  gap: 48px;
+  justify-content: center;
+}
