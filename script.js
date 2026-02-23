@@ -1,9 +1,26 @@
 const POKEAPI_URL = 'https://pokeapi.co/api/v2/pokemon';
+const MIN_ID = 1;
+const MAX_ID = 1025;
+
 const TYPE_COLORS = {
-  normal: '#A8A878', fire: '#F08030', water: '#6890F0', electric: '#F8D030',
-  grass: '#78C850', poison: '#A040A0', ground: '#E0C068', flying: '#A890F0',
-  psychic: '#F85888', bug: '#A8B820', rock: '#B8A038', ghost: '#705898',
-  dragon: '#7038F8', dark: '#705848', steel: '#B8B8D0', fairy: '#EE99AC', ice: '#98D8D8', fighting: '#C03028'
+  normal: '#A8A878',
+  fire: '#F08030',
+  water: '#6890F0',
+  electric: '#F8D030',
+  grass: '#78C850',
+  ice: '#98D8D8',
+  fighting: '#C03028',
+  poison: '#A040A0',
+  ground: '#E0C068',
+  flying: '#A890F0',
+  psychic: '#F85888',
+  bug: '#A8B820',
+  rock: '#B8A038',
+  ghost: '#705898',
+  dragon: '#7038F8',
+  dark: '#705848',
+  steel: '#B8B8D0',
+  fairy: '#EE99AC',
 };
 
 let currentId = 1;
@@ -27,13 +44,17 @@ function renderPokemon(data) {
     tag.className = 'type-tag';
     tag.textContent = type.name;
     tag.style.backgroundColor = TYPE_COLORS[type.name] || '#A8A878';
+    tag.style.color = 'black';
     typesEl.appendChild(tag);
   });
 
   const height = (data.height / 10).toFixed(1);
   const weight = (data.weight / 10).toFixed(1);
+
   const statsMap = {};
-  data.stats.forEach(({ stat, base_stat }) => { statsMap[stat.name] = base_stat; });
+  data.stats.forEach(({ stat, base_stat }) => {
+    statsMap[stat.name] = base_stat;
+  });
 
   document.getElementById('info-panel').innerHTML = `
     <div class="stat-row">height: ${height}m</div>
@@ -60,13 +81,30 @@ function showPanel(isInfo) {
   document.getElementById('moves-panel').classList.toggle('hidden', isInfo);
 }
 
+async function loadPokemon(id) {
+  try {
+    const data = await fetchPokemon(id);
+    renderPokemon(data);
+  } catch (err) {
+    console.error('Failed to load Pokémon:', err);
+  }
+}
+
 document.getElementById('prev-btn').addEventListener('click', () => {
-  if (currentId > 1) { currentId--; fetchPokemon(currentId).then(renderPokemon); }
+  if (currentId > MIN_ID) {
+    currentId--;
+    loadPokemon(currentId);
+  }
 });
+
 document.getElementById('next-btn').addEventListener('click', () => {
-  if (currentId < 1025) { currentId++; fetchPokemon(currentId).then(renderPokemon); }
+  if (currentId < MAX_ID) {
+    currentId++;
+    loadPokemon(currentId);
+  }
 });
+
 document.getElementById('info-btn').addEventListener('click', () => showPanel(true));
 document.getElementById('moves-btn').addEventListener('click', () => showPanel(false));
 
-fetchPokemon(1).then(renderPokemon);
+loadPokemon(currentId);
